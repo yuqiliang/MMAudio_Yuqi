@@ -11,11 +11,19 @@
 
 University of Illinois Urbana-Champaign, Sony AI, and Sony Group Corporation
 
+CVPR 2025
+
 ## Highlight
 
 MMAudio generates synchronized audio given video and/or text inputs.
 Our key innovation is multimodal joint training which allows training on a wide range of audio-visual and audio-text datasets.
 Moreover, a synchronization module aligns the generated audio with the video frames.
+
+Check out this fun video:
+
+[![Does Your Voice Match Your Face?](https://img.youtube.com/vi/SLz3NWLyHxg/0.jpg)](https://youtu.be/SLz3NWLyHxg)
+
+[[Does Your Voice Match Your Face? https://youtu.be/SLz3NWLyHxg]](https://youtu.be/SLz3NWLyHxg)
 
 ## Results
 
@@ -148,6 +156,8 @@ MMAudio was trained on several datasets, including [AudioSet](https://research.g
 
 ## Update Logs
 
+- 2025-03-09: Uploaded the corrected tsv files. See [TRAINING.md](docs/TRAINING.md).
+- 2025-02-27: Disabled the GradScaler by default to improve training stability. See #49.
 - 2024-12-23: Added training and batch evaluation scripts.
 - 2024-12-14: Removed the `ffmpeg<7` requirement for the demos by replacing `torio.io.StreamingMediaDecoder` with `pyav` for reading frames. The read frames are also cached, so we are not reading the same frames again during reconstruction. This should speed things up and make installation less of a hassle.
 - 2024-12-13: Improved for-loop processing in CLIP/Sync feature extraction by introducing a batch size multiplier. We can approximately use 40x batch size for CLIP/Sync without using more memory, thereby speeding up processing. Removed VAE encoder during inference -- we don't need it.
@@ -156,11 +166,11 @@ MMAudio was trained on several datasets, including [AudioSet](https://research.g
 ## Citation
 
 ```bibtex
-@inproceedings{cheng2024taming,
-  title={Taming Multimodal Joint Training for High-Quality Video-to-Audio Synthesis},
+@inproceedings{cheng2025taming,
+  title={{MMAudio}: Taming Multimodal Joint Training for High-Quality Video-to-Audio Synthesis},
   author={Cheng, Ho Kei and Ishii, Masato and Hayakawa, Akio and Shibuya, Takashi and Schwing, Alexander and Mitsufuji, Yuki},
-  booktitle={arXiv},
-  year={2024}
+  booktitle={CVPR},
+  year={2025}
 }
 ```
 
@@ -168,10 +178,14 @@ MMAudio was trained on several datasets, including [AudioSet](https://research.g
 
 - [av-benchmark](https://github.com/hkchengrex/av-benchmark) for benchmarking results.
 
+## Disclaimer
+
+We have no affiliation with and have no knowledge of the party behind the domain "mmaudio.net".
+
 ## Acknowledgement
 
 Many thanks to:
 - [Make-An-Audio 2](https://github.com/bytedance/Make-An-Audio-2) for the 16kHz BigVGAN pretrained model and the VAE architecture
 - [BigVGAN](https://github.com/NVIDIA/BigVGAN)
 - [Synchformer](https://github.com/v-iashin/Synchformer) 
-- [EDM2](https://github.com/NVlabs/edm2) for the magnitude-preserving network architecture
+- [EDM2](https://github.com/NVlabs/edm2) for the magnitude-preserving VAE network architecture
