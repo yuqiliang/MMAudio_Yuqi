@@ -131,6 +131,11 @@ def generate(
                      device=device,
                      dtype=dtype,
                      generator=rng)
+    print("clip_features.shape =", None if clip_features is None else clip_features.shape)
+    print("sync_features.shape =", None if sync_features is None else sync_features.shape)
+    print("text_features.shape =", None if text_features is None else text_features.shape)
+    print("net._clip_seq_len =", net._clip_seq_len)
+    print("net._sync_seq_len =", net._sync_seq_len)
     preprocessed_conditions = net.preprocess_conditions(clip_features, sync_features, text_features)
     empty_conditions = net.get_empty_conditions(
         bs, negative_text_features=negative_text_features if negative_text is not None else None)
